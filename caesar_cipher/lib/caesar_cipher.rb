@@ -9,24 +9,36 @@ class CaesarCipher
     str
       .split('')
       .map do |l|
-        progressed_letter(l)
+        progressed_letter(l, false)
       end
       .join('')
   end
 
-  def progressed_letter(l)
+  def decrypt(str)
+    str
+      .split('')
+      .map do |l|
+        progressed_letter(l, true)
+      end
+      .join('')
+  end
+
+  private
+
+  def progressed_letter(l, encrypted)
+
     if l.match(/[a-z]/)
-      new_letter(l)
+      new_letter(l, encrypted)
     elsif l.match(/[A-Z]/)
-      new_letter(l.downcase).upcase
+      new_letter(l.downcase, encrypted).upcase
     else
       l
     end
   end
 
-  def new_letter(l)
+  def new_letter(l, encrypted)
     pos = l.ord - 'a'.ord
-    new_pos = (pos + @num) % @@alphabet_length
+    new_pos = (encrypted ? pos - @num : pos + @num) % @@alphabet_length
     new_ord = 'a'.ord + new_pos
     new_ord.chr
   end
