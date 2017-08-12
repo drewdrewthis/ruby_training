@@ -16,8 +16,6 @@ def bubble_sort(arr)
   arr
 end
 
-# puts bubble_sort([4,3,78,2,0,2])
-
 def bubble_sort_by(arr)
   changes = true
   while changes do
@@ -34,8 +32,3 @@ def bubble_sort_by(arr)
   arr
 end
 
-arr = bubble_sort_by(["hi","hello","hey"]) do |left,right|
-  left.length <=> right.length
-end
-
-puts arr
