@@ -4,11 +4,27 @@
     <title>PrivateEvents</title>
     <%= csrf_meta_tags %>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "layouts/header" %>
+    <div class='container'>
+      <% if logged_in? %>
+        <div class='text-right'>
+          <small><em>Logged in as: <%= @current_user.username %></em></small>
+        </div>
+      <% end %>
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
