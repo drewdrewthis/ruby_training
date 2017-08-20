@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  validate :username, presence: true
+  validates :username,
+    presence: true,
+    uniqueness: true
 
   has_many :events
   has_many :invitations
