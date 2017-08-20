@@ -1,14 +1,17 @@
-<% provide(:title, "Log in") %>
-<h1 class='text-center'>Log in</h1>
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <h1 class='text-center'>Log in</h1>
 
-<div class="text-center">
-  <%= form_for(:session, url: login_path) do |f| %>
+    <div class="text-center">
+      <%= form_for(:session, url: login_path) do |f| %>
 
-    <%= f.label :username %>
-    <%= f.text_field :username, class: 'form-control' %>
-    <br/>
-    <%= f.submit "Log in", class: "btn btn-primary" %>
-  <% end %>
+        <%= f.label :username %>
+        <%= f.text_field :username, class: 'form-control' %>
+        <br/>
+        <%= f.submit "Log in", class: "btn btn-primary" %>
+      <% end %>
 
-  <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+      <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+    </div>
+  </div>
 </div>

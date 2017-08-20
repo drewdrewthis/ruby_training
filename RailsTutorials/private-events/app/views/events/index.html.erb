@@ -1,35 +1,25 @@
-<% @user.reload %>
-<h1>User Info</h1>
-<hr/>
-<p>
-id: <%= @user.id %>
-</p>
-<p>
-username: <%= @user.username %>
-</p>
-<hr/>
-<h3>Created Events</h3>
+<h1>All Events</h1>
+
 <table class='table'>
   <thead>
     <tr>
       <th>id</th>
+      <th>Host</th>
       <th>Title</th>
       <th>Description</th>
       <th>Date</th>
     </tr>
   </thead>
   <tbody>
-    <% @user.events.each do |event| %>
+    <% @events.each do |event| %>
       <tr>
         <td><%= event.id %></td>
+        <td><%= event.creator.username %></td>
         <td><%= event.title %></td>
         <td><%= event.description %></td>
         <td><%= event.date %></td>
+        <td><%= link_to 'View', event %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<% if current_user == @user %>
-  <%= link_to 'Create new event', events_new_path, class: 'btn btn-primary' %>
-<% end %>
