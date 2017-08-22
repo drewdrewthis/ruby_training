@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
+    event
   end
 
   def create
@@ -22,6 +22,30 @@ class EventsController < ApplicationController
     end
   end
 
+  def destroy
+    title = event.title
+
+    if event.destroy
+      flash[:danger] = "Event #{title} deleted."
+      redirect_to :back
+    else
+      flash.now[:danger] = "Event not deleted: #{event.errors.full_messages}"
+      redirect_to :back
+    end
+  end
+
+  def subscribe
+    new_attendee = event.event_attendees.new(attendee_id: current_user.id)
+
+    if new_attendee.save
+      flash[:success] = "Great! See you there!"
+      redirect_to :back
+    else
+      flash.now[:danger] = "Whoops! Something went wrong: #{event.errors.full_messages}"
+      redirect_to :back
+    end
+  end
+
   private
 
   def event_params
@@ -31,5 +55,9 @@ class EventsController < ApplicationController
       :date,
       :user_id
     )
+  end
+
+  def event
+    Event.find(params[:id])
   end
 end

@@ -8,26 +8,7 @@ username: <%= @user.username %>
 </p>
 <hr/>
 <h3>Created Events</h3>
-<table class='table'>
-  <thead>
-    <tr>
-      <th>id</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @user.events.each do |event| %>
-      <tr>
-        <td><%= event.id %></td>
-        <td><%= event.title %></td>
-        <td><%= event.description %></td>
-        <td><%= event.date %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'layouts/event_table', events: @user.events %>
 
 <% if current_user == @user %>
   <%= link_to 'Create new event', events_new_path, class: 'btn btn-primary' %>
@@ -37,23 +18,4 @@ username: <%= @user.username %>
 <br/>
 
 <h3>Attending Events</h3>
-<table class='table'>
-  <thead>
-    <tr>
-      <th>id</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @user.attended_events.each do |event| %>
-      <tr>
-        <td><%= event.id %></td>
-        <td><%= event.title %></td>
-        <td><%= event.description %></td>
-        <td><%= event.date %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'layouts/event_table', events: @user.attended_events %>

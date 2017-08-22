@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   delete  '/logout',   to: 'sessions#destroy'
   resources :users
   resources :events
+  post     '/subscribe/:id/:attendee_id', to: 'events#subscribe'
 end
