@@ -1,0 +1,19 @@
+<h1>All Users</h1>
+
+<table style="
+min-width: 500px;
+text-align: left;
+">
+  <tr>
+    <th>ID</th>
+    <th>Username</th>
+  </tr>
+
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.username %></td>
+      <td><%= link_to 'Show', user_path(user) %></td>
+    </tr>
+  <% end %>
+</table>

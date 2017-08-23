@@ -1,0 +1,21 @@
+<h1>User Info</h1>
+<hr/>
+<p>
+id: <%= @user.id %>
+</p>
+<p>
+username: <%= @user.username %>
+</p>
+<hr/>
+<h3>Created Events</h3>
+<%= render 'layouts/event_table', events: @user.events %>
+
+<% if current_user == @user %>
+  <%= link_to 'Create new event', events_new_path, class: 'btn btn-primary' %>
+<% end %>
+
+<br/>
+<br/>
+
+<h3>Attending Events</h3>
+<%= render 'layouts/event_table', events: @user.attended_events %>

@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: event_attendees
+#
+#  id                :integer          not null, primary key
+#  attendee_id       :integer
+#  attended_event_id :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  attendee_id: 1
+  attended_event_id: 1
+
+two:
+  attendee_id: 1
+  attended_event_id: 1
